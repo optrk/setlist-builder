@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.7px Arial; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;title&gt;Recital Architect Prototype&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;style&gt;</span></p>
+<p class="p1"><span class="s1">        :root {</span></p>
+<p class="p1"><span class="s1">            --bg-color: #f4f4f9;</span></p>
+<p class="p1"><span class="s1">            --panel-bg: #ffffff;</span></p>
+<p class="p1"><span class="s1">            --header-bg: #e0e0e6;</span></p>
+<p class="p1"><span class="s1">            --border-color: #d1d1d6;</span></p>
+<p class="p1"><span class="s1">            --text-color: #333;</span></p>
+<p class="p1"><span class="s1">            --accent-color: #007aff;</span></p>
+<p class="p1"><span class="s1">            --accent-light: #e6f2ff;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        body {</span></p>
+<p class="p1"><span class="s1">            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;</span></p>
+<p class="p1"><span class="s1">            margin: 0;</span></p>
+<p class="p1"><span class="s1">            padding: 20px;</span></p>
+<p class="p1"><span class="s1">            background-color: var(--bg-color);</span></p>
+<p class="p1"><span class="s1">            color: var(--text-color);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        h1, h2 {</span></p>
+<p class="p1"><span class="s1">            font-weight: 500;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .container {</span></p>
+<p class="p1"><span class="s1">            display: grid;</span></p>
+<p class="p1"><span class="s1">            grid-template-columns: 1fr 2fr;</span></p>
+<p class="p1"><span class="s1">            grid-template-rows: auto 1fr;</span></p>
+<p class="p1"><span class="s1">            gap: 20px;</span></p>
+<p class="p1"><span class="s1">            max-width: 1200px;</span></p>
+<p class="p1"><span class="s1">            margin: auto;</span></p>
+<p class="p1"><span class="s1">            height: 85vh;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .panel {</span></p>
+<p class="p1"><span class="s1">            background-color: var(--panel-bg);</span></p>
+<p class="p1"><span class="s1">            border: 1px solid var(--border-color);</span></p>
+<p class="p1"><span class="s1">            border-radius: 8px;</span></p>
+<p class="p1"><span class="s1">            padding: 15px;</span></p>
+<p class="p1"><span class="s1">            overflow-y: auto;</span></p>
+<p class="p1"><span class="s1">            box-shadow: 0 2px 4px rgba(0,0,0,0.05);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        #filter-panel { grid-column: 1 / 2; grid-row: 1 / 3; }</span></p>
+<p class="p1"><span class="s1">        #programme-builder { grid-column: 2 / 3; grid-row: 1 / 3; display: flex; flex-direction: column; }</span></p>
+<p class="p1"><span class="s1">        #results-panel { </span></p>
+<p class="p1"><span class="s1">            grid-column: 1 / 2; </span></p>
+<p class="p1"><span class="s1">            grid-row: 2 / 3; </span></p>
+<p class="p1"><span class="s1">            margin-top: -85vh; /* A bit of a layout trick to make it look like 3 panels */</span></p>
+<p class="p1"><span class="s1">            padding-top: 50%;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .filter-group { margin-bottom: 20px; }</span></p>
+<p class="p1"><span class="s1">        .filter-group h3 { margin-top: 0; margin-bottom: 10px; font-size: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }</span></p>
+<p class="p1"><span class="s1">        .filter-group label {</span></p>
+<p class="p1"><span class="s1">            display: block;</span></p>
+<p class="p1"><span class="s1">            margin-bottom: 8px;</span></p>
+<p class="p1"><span class="s1">            cursor: pointer;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .result-item, .programme-item, .event-block {</span></p>
+<p class="p1"><span class="s1">            padding: 10px;</span></p>
+<p class="p1"><span class="s1">            border: 1px solid var(--border-color);</span></p>
+<p class="p1"><span class="s1">            border-radius: 5px;</span></p>
+<p class="p1"><span class="s1">            margin-bottom: 10px;</span></p>
+<p class="p1"><span class="s1">            background-color: var(--bg-color);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .result-item { cursor: grab; }</span></p>
+<p class="p1"><span class="s1">        .result-item:active { cursor: grabbing; }</span></p>
+<p class="p1"><span class="s1">        .result-item strong, .programme-item strong { display: block; font-size: 1.1em; }</span></p>
+<p class="p1"><span class="s1">        .result-item em, .programme-item em { color: #555; font-size: 0.9em; }</span></p>
+<p class="p1"><span class="s1">        .programme-list { flex-grow: 1; min-height: 200px; padding: 10px; border: 2px dashed var(--border-color); border-radius: 5px; }</span></p>
+<p class="p1"><span class="s1">        .programme-item .controls { float: right; cursor: pointer; font-weight: bold; }</span></p>
+<p class="p1"><span class="s1">        .programme-total {</span></p>
+<p class="p1"><span class="s1">            padding-top: 15px;</span></p>
+<p class="p1"><span class="s1">            margin-top: 15px;</span></p>
+<p class="p1"><span class="s1">            border-top: 1px solid var(--border-color);</span></p>
+<p class="p1"><span class="s1">            font-size: 1.2em;</span></p>
+<p class="p1"><span class="s1">            font-weight: bold;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .event-buttons button {</span></p>
+<p class="p1"><span class="s1">            padding: 8px 12px;</span></p>
+<p class="p1"><span class="s1">            border: 1px solid var(--accent-color);</span></p>
+<p class="p1"><span class="s1">            background-color: transparent;</span></p>
+<p class="p1"><span class="s1">            color: var(--accent-color);</span></p>
+<p class="p1"><span class="s1">            border-radius: 5px;</span></p>
+<p class="p1"><span class="s1">            cursor: pointer;</span></p>
+<p class="p1"><span class="s1">            margin-right: 10px;</span></p>
+<p class="p1"><span class="s1">            margin-bottom: 10px;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        .event-buttons button:hover { background-color: var(--accent-light); }</span></p>
+<p class="p1"><span class="s1">        .event-block input[type="text"], .event-block input[type="number"] {</span></p>
+<p class="p1"><span class="s1">            border: 1px solid var(--border-color);</span></p>
+<p class="p1"><span class="s1">            padding: 5px;</span></p>
+<p class="p1"><span class="s1">            border-radius: 3px;</span></p>
+<p class="p1"><span class="s1">            margin-right: 5px;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">    &lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    &lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;div id="filter-panel" class="panel"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;h2&gt;🎹 Filters&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div id="filters"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        &lt;div id="programme-builder" class="panel"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;h2&gt;🎼 Programme Builder&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div class="event-buttons"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button id="add-talk-btn"&gt;+ Add Spoken Section&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;button id="add-interval-btn"&gt;+ Add Interval&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div id="programme-list" class="programme-list"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div id="programme-total" class="programme-total"&gt;</span></p>
+<p class="p1"><span class="s1">                Total Time: 00:00</span></p>
+<p class="p1"><span class="s1">            &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        &lt;div id="results-panel" class="panel"&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;h2&gt;📖 Results&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1">            &lt;div id="results"&gt;</span></p>
+<p class="p1"><span class="s1">                &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">    &lt;script&gt;</span></p>
+<p class="p1"><span class="s1">        // --- DATABASE ---</span></p>
+<p class="p1"><span class="s1">        const repertoireDB = [</span></p>
+<p class="p1"><span class="s1">            { id: 1, title: "Oblivion", composer: "Astor Piazzolla", duration: 240, moods: ["Melancholy", "Passionate"], tempo: "Slow", instrumentation: ["Clarinet", "Piano"], style: ["20th Century", "Argentinian", "Tango Nuevo"] },</span></p>
+<p class="p1"><span class="s1">            { id: 2, title: "Histoire du Tango - Cafe 1930", composer: "Astor Piazzolla", duration: 390, moods: ["Melancholy", "Passionate", "Playful"], tempo: "Moderate", instrumentation: ["Clarinet", "Piano"], style: ["20th Century", "Argentinian", "Tango Nuevo"] },</span></p>
+<p class="p1"><span class="s1">            { id: 3, title: "Canzonetta", composer: "Gabriel Pierné", duration: 210, moods: ["Playful", "Peaceful"], tempo: "Moderate", instrumentation: ["Clarinet", "Piano"], style: ["Romantic", "French"] },</span></p>
+<p class="p1"><span class="s1">            { id: 4, title: "Arabesque No. 1", composer: "Claude Debussy", duration: 270, moods: ["Peaceful", "Playful", "Dreamy"], tempo: "Moderate", instrumentation: ["Clarinet", "Piano"], style: ["Impressionist", "French"] }</span></p>
+<p class="p1"><span class="s1">        ];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        let programme = [];</span></p>
+<p class="p1"><span class="s1">        let nextEventId = 0;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        // --- FILTER GENERATION ---</span></p>
+<p class="p1"><span class="s1">        const filtersContainer = document.getElementById('filters');</span></p>
+<p class="p1"><span class="s1">        const filterCategories = {</span></p>
+<p class="p1"><span class="s1">            moods: [...new Set(repertoireDB.flatMap(p =&gt; p.moods))],</span></p>
+<p class="p1"><span class="s1">            tempo: [...new Set(repertoireDB.map(p =&gt; p.tempo))],</span></p>
+<p class="p1"><span class="s1">            instrumentation: [...new Set(repertoireDB.flatMap(p =&gt; p.instrumentation))],</span></p>
+<p class="p1"><span class="s1">            style: [...new Set(repertoireDB.flatMap(p =&gt; p.style))]</span></p>
+<p class="p1"><span class="s1">        };</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        for (const category in filterCategories) {</span></p>
+<p class="p1"><span class="s1">            const group = document.createElement('div');</span></p>
+<p class="p1"><span class="s1">            group.className = 'filter-group';</span></p>
+<p class="p1"><span class="s1">            const title = document.createElement('h3');</span></p>
+<p class="p1"><span class="s1">            title.textContent = category.charAt(0).toUpperCase() + category.slice(1);</span></p>
+<p class="p1"><span class="s1">            group.appendChild(title);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">            filterCategories[category].forEach(option =&gt; {</span></p>
+<p class="p1"><span class="s1">                const label = document.createElement('label');</span></p>
+<p class="p1"><span class="s1">                const checkbox = document.createElement('input');</span></p>
+<p class="p1"><span class="s1">                checkbox.type = 'checkbox';</span></p>
+<p class="p1"><span class="s1">                checkbox.value = option;</span></p>
+<p class="p1"><span class="s1">                checkbox.dataset.category = category;</span></p>
+<p class="p1"><span class="s1">                checkbox.addEventListener('change', renderResults);</span></p>
+<p class="p1"><span class="s1">                label.appendChild(checkbox);</span></p>
+<p class="p1"><span class="s1">                label.append(` ${option}`);</span></p>
+<p class="p1"><span class="s1">                group.appendChild(label);</span></p>
+<p class="p1"><span class="s1">            });</span></p>
+<p class="p1"><span class="s1">            filtersContainer.appendChild(group);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        // --- RENDERING FUNCTIONS ---</span></p>
+<p class="p1"><span class="s1">        function formatTime(seconds) {</span></p>
+<p class="p1"><span class="s1">            const min = Math.floor(seconds / 60).toString().padStart(2, '0');</span></p>
+<p class="p1"><span class="s1">            const sec = (seconds % 60).toString().padStart(2, '0');</span></p>
+<p class="p1"><span class="s1">            return `${min}:${sec}`;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        function renderResults() {</span></p>
+<p class="p1"><span class="s1">            const resultsContainer = document.getElementById('results');</span></p>
+<p class="p1"><span class="s1">            resultsContainer.innerHTML = '';</span></p>
+<p class="p1"><span class="s1">            </span></p>
+<p class="p1"><span class="s1">            const activeFilters = {};</span></p>
+<p class="p1"><span class="s1">            document.querySelectorAll('#filters input:checked').forEach(input =&gt; {</span></p>
+<p class="p1"><span class="s1">                if (!activeFilters[input.dataset.category]) {</span></p>
+<p class="p1"><span class="s1">                    activeFilters[input.dataset.category] = [];</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">                activeFilters[input.dataset.category].push(input.value);</span></p>
+<p class="p1"><span class="s1">            });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">            const filteredDB = repertoireDB.filter(piece =&gt; {</span></p>
+<p class="p1"><span class="s1">                return Object.entries(activeFilters).every(([category, values]) =&gt; {</span></p>
+<p class="p1"><span class="s1">                    if (values.length === 0) return true;</span></p>
+<p class="p1"><span class="s1">                    if (Array.isArray(piece[category])) {</span></p>
+<p class="p1"><span class="s1">                        return values.some(v =&gt; piece[category].includes(v));</span></p>
+<p class="p1"><span class="s1">                    }</span></p>
+<p class="p1"><span class="s1">                    return values.includes(piece[category]);</span></p>
+<p class="p1"><span class="s1">                });</span></p>
+<p class="p1"><span class="s1">            });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">            filteredDB.forEach(piece =&gt; {</span></p>
+<p class="p1"><span class="s1">                const div = document.createElement('div');</span></p>
+<p class="p1"><span class="s1">                div.className = 'result-item';</span></p>
+<p class="p1"><span class="s1">                div.draggable = true;</span></p>
+<p class="p1"><span class="s1">                div.dataset.pieceId = piece.id;</span></p>
+<p class="p1"><span class="s1">                div.innerHTML = `&lt;strong&gt;${piece.title}&lt;/strong&gt;&lt;em&gt;${piece.composer} (${formatTime(piece.duration)})&lt;/em&gt;`;</span></p>
+<p class="p1"><span class="s1">                div.addEventListener('dragstart', handleDragStart);</span></p>
+<p class="p1"><span class="s1">                resultsContainer.appendChild(div);</span></p>
+<p class="p1"><span class="s1">            });</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        function renderProgramme() {</span></p>
+<p class="p1"><span class="s1">            const programmeList = document.getElementById('programme-list');</span></p>
+<p class="p1"><span class="s1">            programmeList.innerHTML = '';</span></p>
+<p class="p1"><span class="s1">            </span></p>
+<p class="p1"><span class="s1">            programme.forEach((item, index) =&gt; {</span></p>
+<p class="p1"><span class="s1">                const div = document.createElement('div');</span></p>
+<p class="p1"><span class="s1">                div.dataset.index = index;</span></p>
+<p class="p1"><span class="s1">                div.draggable = true;</span></p>
+<p class="p1"><span class="s1">                div.addEventListener('dragstart', handleProgrammeDragStart);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">                if (item.type === 'piece') {</span></p>
+<p class="p1"><span class="s1">                    div.className = 'programme-item';</span></p>
+<p class="p1"><span class="s1">                    div.innerHTML = `&lt;span class="controls" onclick="removeFromProgramme(${index})"&gt;✖&lt;/span&gt;&lt;strong&gt;${item.title}&lt;/strong&gt;&lt;em&gt;${item.composer} (${formatTime(item.duration)})&lt;/em&gt;`;</span></p>
+<p class="p1"><span class="s1">                } else { // event block</span></p>
+<p class="p1"><span class="s1">                    div.className = 'event-block';</span></p>
+<p class="p1"><span class="s1">                    div.innerHTML = `</span></p>
+<p class="p1"><span class="s1">                        &lt;span class="controls" onclick="removeFromProgramme(${index})"&gt;✖&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1">                        &lt;input type="text" value="${item.title}" onchange="updateEvent(${index}, 'title', this.value)"&gt;</span></p>
+<p class="p1"><span class="s1">                        Duration (min): &lt;input type="number" value="${item.duration / 60}" step="0.5" min="0" onchange="updateEvent(${index}, 'duration', this.value * 60)"&gt;</span></p>
+<p class="p1"><span class="s1">                    `;</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">                programmeList.appendChild(div);</span></p>
+<p class="p1"><span class="s1">            });</span></p>
+<p class="p1"><span class="s1">            updateTotalTime();</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        function updateTotalTime() {</span></p>
+<p class="p1"><span class="s1">            const totalSeconds = programme.reduce((sum, item) =&gt; sum + item.duration, 0);</span></p>
+<p class="p1"><span class="s1">            document.getElementById('programme-total').textContent = `Total Time: ${formatTime(totalSeconds)}`;</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        // --- EVENT HANDLERS &amp; LOGIC ---</span></p>
+<p class="p1"><span class="s1">        function handleDragStart(e) {</span></p>
+<p class="p1"><span class="s1">            e.dataTransfer.setData('text/plain', e.target.dataset.pieceId);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        function handleProgrammeDragStart(e) {</span></p>
+<p class="p1"><span class="s1">            e.dataTransfer.setData('text/programme-index', e.target.dataset.index);</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        </span></p>
+<p class="p1"><span class="s1">        const programmeList = document.getElementById('programme-list');</span></p>
+<p class="p1"><span class="s1">        programmeList.addEventListener('dragover', e =&gt; e.preventDefault());</span></p>
+<p class="p1"><span class="s1">        programmeList.addEventListener('drop', handleDrop);</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        function handleDrop(e) {</span></p>
+<p class="p1"><span class="s1">            e.preventDefault();</span></p>
+<p class="p1"><span class="s1">            const pieceId = e.dataTransfer.getData('text/plain');</span></p>
+<p class="p1"><span class="s1">            const programmeIndex = e.dataTransfer.getData('text/programme-index');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">            if (pieceId) { // Dropping a new piece</span></p>
+<p class="p1"><span class="s1">                const piece = repertoireDB.find(p =&gt; p.id == pieceId);</span></p>
+<p class="p1"><span class="s1">                if (piece) {</span></p>
+<p class="p1"><span class="s1">                    programme.push({ ...piece, type: 'piece' });</span></p>
+<p class="p1"><span class="s1">                }</span></p>
+<p class="p1"><span class="s1">            } else if (programmeIndex) { // Reordering within programme</span></p>
+<p class="p1"><span class="s1">                const draggedItem = programme.splice(programmeIndex, 1)[0];</span></p>
+<p class="p1"><span class="s1">                const dropTarget = e.target.closest('.programme-item, .event-block');</span></p>
+<p class="p1"><span class="s1">                const dropIndex = dropTarget ? dropTarget.dataset.index : programme.length;</span></p>
+<p class="p1"><span class="s1">                programme.splice(dropIndex, 0, draggedItem);</span></p>
+<p class="p1"><span class="s1">            }</span></p>
+<p class="p1"><span class="s1">            renderProgramme();</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p1"><span class="s1">        </span></p>
+<p class="p1"><span class="s1">        window.removeFromProgramme = function(index) {</span></p>
+<p class="p1"><span class="s1">            programme.splice(index, 1);</span></p>
+<p class="p1"><span class="s1">            renderProgramme();</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        window.updateEvent = function(index, field, value) {</span></p>
+<p class="p1"><span class="s1">            programme[index][field] = value;</span></p>
+<p class="p1"><span class="s1">            updateTotalTime();</span></p>
+<p class="p1"><span class="s1">        }</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        document.getElementById('add-talk-btn').addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1">            programme.push({ id: `evt-${nextEventId++}`, type: 'event', title: 'Spoken Section', duration: 120 });</span></p>
+<p class="p1"><span class="s1">            renderProgramme();</span></p>
+<p class="p1"><span class="s1">        });</span></p>
+<p class="p1"><span class="s1">        </span></p>
+<p class="p1"><span class="s1">        document.getElementById('add-interval-btn').addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1">            programme.push({ id: `evt-${nextEventId++}`, type: 'event', title: 'Interval', duration: 900 });</span></p>
+<p class="p1"><span class="s1">            renderProgramme();</span></p>
+<p class="p1"><span class="s1">        });</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">        // --- INITIAL RENDER ---</span></p>
+<p class="p1"><span class="s1">        renderResults();</span></p>
+<p class="p1"><span class="s1">    &lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+</body>
+</html>
